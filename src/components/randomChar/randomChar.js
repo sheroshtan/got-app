@@ -33,10 +33,6 @@ const View = ({ char }) => {
 }
 
 export default class RandomChar extends Component {
-    constructor() {
-        super();
-        this.updateChar();
-    }
 
     GOT_Service = new GOT_Service();
 
@@ -44,6 +40,10 @@ export default class RandomChar extends Component {
         char: {},
         loading: true,
         error: false
+    }
+
+    componentDidMount() {
+        this.updateChar();
     }
 
     updateChar() {

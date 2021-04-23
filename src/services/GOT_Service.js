@@ -21,6 +21,26 @@ export default class GOT_Service {
         return this._transformCharacter(res);
     }
 
+    async getAllBooks() {
+        const res = await this.getResource(`books`);
+        return res.map(this._transformBook);
+    }
+
+    async getBook(id) {
+        const res = await this.getResource(`books/${id}`);
+        return this._transformBook(res);
+    }
+
+    async getAllHouses() {
+        const res = await this.getResource(`houses`);
+        return res.map(this._transformHouse);
+    }
+
+    async getHouse(id) {
+        const res = await this.getResource(`houses/${id}`);
+        return this._transformHouse(res);
+    }
+
     _transformCharacter(char) {
         return {
             name: char.name,
