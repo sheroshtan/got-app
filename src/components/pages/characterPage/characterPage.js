@@ -1,10 +1,14 @@
 import React, {Component} from "react"
 import ItemList from "../../itemList";
-import ItemDetails, {Field} from "../../charDetails";
+import ItemDetails, {Field} from "../../itemDetails";
 import ErrorMessage from "../../errorMessage";
 import RowBlock from "../../rowBlock";
+import GOT_Service from "../../../services/GOT_Service";
 
 export default class CharacterPage extends Component {
+
+    GOT_Service = new GOT_Service();
+
     state = {
         selectedItem: 1,
         error: false
@@ -27,18 +31,16 @@ export default class CharacterPage extends Component {
             return <ErrorMessage/>
         }
 
-        const {getAllData, getSpecificData} = this.props;
-
         const itemList = (
             <ItemList
                 onItemSelected={this.onItemSelected}
-                getAllData={getAllData}
+                getAllData={this.GOT_Service.getAllCharacters}
                 renderItem={({name, gender}) => `${name} (${gender})`}/>
         );
 
         const itemDetails = (
             <ItemDetails itemId={this.state.selectedItem}
-                         getSpecificData={getSpecificData}>
+                         getSpecificData={this.GOT_Service.getCharacter}>
                 <Field field="gender" label="Gender"/>
                 <Field field="born" label="Born"/>
                 <Field field="died" label="Died"/>

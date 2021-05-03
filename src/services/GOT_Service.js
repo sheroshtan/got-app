@@ -52,7 +52,6 @@ export default class GOT_Service {
     }
 
     _transformHouse = (house) => {
-        console.log(house);
         return {
             name: house.name,
             region: house.region,

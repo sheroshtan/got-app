@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import GOT_Service from "../../services/GOT_Service";
-import './itemList.css';
 import Spinner from "../spinner";
 
+import './itemList.css';
 
 export default class ItemList extends Component {
 
@@ -30,11 +29,10 @@ export default class ItemList extends Component {
         const items = itemList.map((item, i) => {
             const label = this.props.renderItem(item);
 
-            return <li
-                className="list-group-item"
-                key={i}
-                onClick={() => onItemSelected(i+1)}>
-                        { label }
+            return <li className="list-group-item"
+                       key={i}
+                       onClick={() => onItemSelected(i+1)}>
+                { label }
                    </li>
         })
 
